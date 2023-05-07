@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+
+//"select" means the field should be included or excluded by default when querying documents from the MongoDB database.
+//"salt" refers to a random value that is added to a user's password before hashing it.
+
 const UserSchema=new mongoose.Schema({
     username:{type:String,required:true},
     email:{type:String,required:true},

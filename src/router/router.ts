@@ -1,11 +1,15 @@
 import express from "express";
+import { login, register } from "../controllers/authentication"
+import { deleteUser, getAllUsers, updateUser } from "../controllers/users"
+import { isauthenticated, isowner } from "../middlewares/middleware-1";
 
-import routerAuthenticate from "./routerAuthenticate";
-import users from "./users";
 
 const router=express.Router();
-export default function():express.Router{
-    routerAuthenticate(router);
-    users(router)
-    return router;
-}
+
+router.post("/auth/register",register)
+router.post("/auth/login",login)
+router.get('/users',isauthenticated,getAllUsers);  
+router.delete("/users/:id",isauthenticated,isowner,deleteUser)
+router.patch("/users/:id",isauthenticated,isowner,updateUser)
+
+export default router;  

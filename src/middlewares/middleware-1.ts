@@ -31,6 +31,6 @@ export const isauthenticated=async function(req:express.Request,res:express.Resp
         return next();
     }
     catch(error){
-
+        return res.status(404).send("error")
     }
 }
