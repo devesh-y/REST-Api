@@ -7,7 +7,7 @@ export const login=async (req:express.Request,res:express.Response)=>{
         if(!email || !password){
             return res.status(404).send("invalid credentials")
         }
-        const user=await getUserbyEmail(email).select('+authentication.salt +authentication.password') ;
+        const user=await getUserbyEmail(email).select('authentication.salt authentication.password') ;
         if(!user){
             return res.status(400).send("no user exists with this email")
         }
@@ -15,11 +15,12 @@ export const login=async (req:express.Request,res:express.Response)=>{
         if(user.authentication.password!=expectedHash){
             return res.status(403).send("invalid credentials")
         }
-           
+        
+        //adding the session token
         const salt=random();
         user.authentication.sessionToken=authentication(salt,user._id.toString());
         await user.save();
-        res.cookie(email,user.authentication.sessionToken,{domain:'localhost',path:'/'})
+        res.cookie(process.env.COOKIE,user.authentication.sessionToken,{domain:'localhost',path:'/'})
         return res.status(200).json(user);
 
     }
@@ -46,11 +47,12 @@ export const register=async (req:express.Request,res:express.Response)=>{
             authentication:
             {
                 salt,
-                password: authentication(salt,password)
+                password: authentication(salt,password),
+                //ignoring the session token at time of register
             }
   
         })  
-        return res.status(200).json(user).end();
+        return res.status(200).json(user);
     }
     catch(error){
        

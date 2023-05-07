@@ -16,8 +16,8 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
     
-app.listen(5000,()=>{
-    console.log("server is listening at http://localhost:5000");
+app.listen(process.env.PORT,()=>{
+    console.log(`server is listening at http://localhost:${process.env.PORT}`);
 })
 
 
