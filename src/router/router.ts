@@ -1,7 +1,11 @@
 import express from "express";
-const router =express.Router();
 
+import routerAuthenticate from "./routerAuthenticate";
+import users from "./users";
 
+const router=express.Router();
 export default function():express.Router{
-    return router
+    routerAuthenticate(router);
+    users(router)
+    return router;
 }
