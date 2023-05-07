@@ -4,8 +4,10 @@ import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
 import compression from "compression"
 import cors from "cors"
+import {config} from "dotenv"
 import mongoose from "mongoose"
 const app=express();
+config();
 app.use(cors({
     credentials:true
 }))
