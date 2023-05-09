@@ -28,7 +28,7 @@ export const login= async(req:express.Request,res:express.Response)=>{
     catch(error){
      
         return res.status(404).send("error occured")   
-    }
+    }  
 }
 export const register=async (req:express.Request,res:express.Response)=>{
     try{
