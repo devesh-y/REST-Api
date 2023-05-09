@@ -1,10 +1,11 @@
 # REST-Api
-Instruction to follow
-1. create a .env file
-2. add these following values <br>
-    USER_PASS=<br>
-    USER_ID=<br>
-    SECRET=<br>
-    DB_NAME=<br>
-    COOKIE=<br>
+Instruction to follow, create a .env file
+
+add these following values
+
+    USER_PASS=
+    USER_ID=
+    SECRET=
+    DB_NAME=
+    COOKIE=
     PORT=
