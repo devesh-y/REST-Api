@@ -7,6 +7,7 @@ export const login= async(req:express.Request,res:express.Response)=>{
         if(!email || !password){
             return res.status(404).send("invalid credentials")
         }
+
         const user=await getUserbyEmail(email).select('authentication.salt authentication.password');
         if(!user){
             return res.status(400).send("no user exists with this email")
@@ -54,7 +55,7 @@ export const register=async (req:express.Request,res:express.Response)=>{
                 isAdmin:false
                 //ignoring the session token at time of register
             }
-  
+            
         }).catch((err)=>{
             console.log("error occured at registering to server");
         })  

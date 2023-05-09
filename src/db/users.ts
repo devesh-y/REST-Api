@@ -17,6 +17,8 @@ const UserSchema=new mongoose.Schema({
 });
 
 export const UserModel=mongoose.model('User',UserSchema);
+//mongodb will map the name of model with the collection , 
+//and name that with its plural ,=> it will be users
 export const getUsers=()=>UserModel.find();
 export const getUserbyEmail=(email:string)=>UserModel.findOne({email});
 export const getUserbySessionToken=(sessionToken:string)=>UserModel.findOne({'authentication.sessionToken':sessionToken});
