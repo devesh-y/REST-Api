@@ -1,14 +1,14 @@
 # REST-Api
-Instruction to follow, create a .env file
+Instruction to follow: 
+- create a .env file
+- add these following values
 
-add these following values
-
-    USER_PASS=
-    USER_ID=
-    SECRET=
-    DB_NAME=
-    COOKIE=
-    PORT=
+        USER_PASS=
+        USER_ID=
+        SECRET=
+        DB_NAME=
+        COOKIE=
+        PORT=
 # Key-features
 This API include robust error handling, authentication, and authorization mechanisms to ensure data security. It also supports advanced querying capabilities, enabling clients to retrieve and filter data based on specific criteria.
 
